@@ -1,12 +1,14 @@
 # Dery Hafizh Latief — Developer Portfolio 🚀
 
-[![Live on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://speedy-piano-0gn4hrk.tmp.now)
+[![Live on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://deryhafizh-porto-self-tau.vercel.app/)
 [![React 19](https://img.shields.io/badge/React-19.2.0-blue?style=for-the-badge&logo=react)](https://react.dev/)
 [![TanStack Start](https://img.shields.io/badge/TanStack-Start-FF4154?style=for-the-badge&logo=tanstack)](https://tanstack.com/start)
 [![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 [![Tests](https://img.shields.io/badge/Tests-100%25%20Passing-success?style=for-the-badge&logo=vitest)](https://vitest.dev/)
 
 > Website portofolio personal **Dery Hafizh Latief (Znt)** — Mahasiswa Informatika Universitas Gunadarma angkatan 2025. Dibangun dengan fokus estetika *warm artisanal coffee*, performa tinggi 60 FPS, serta interaktivitas *3D Isometric Exploded Showcase*.
+
+🌐 **Live Website:** [https://deryhafizh-porto-self-tau.vercel.app/](https://deryhafizh-porto-self-tau.vercel.app/)
 
 ---
 
@@ -127,7 +129,7 @@ npx vercel deploy --prebuilt --prod
 
 ## 📬 Kontak
 
-- **Nama:** Dery Hafizh Latief (Znt)
+- **Website:** [https://deryhafizh-porto-self-tau.vercel.app/](https://deryhafizh-porto-self-tau.vercel.app/)
 - **Email:** [derycikampek@gmail.com](mailto:derycikampek@gmail.com)
 - **GitHub:** [@deryhafizh](https://github.com/deryhafizh)
 - **LinkedIn:** [linkedin.com/in/deryhafizh](https://www.linkedin.com/in/deryhafizh/)
