@@ -72,8 +72,8 @@
 
 1. **Clone repositori:**
    ```bash
-   git clone https://github.com/deryhafizh/dery-builds-a-future.git
-   cd dery-builds-a-future
+   git clone https://github.com/deryhafizh/Porto.git
+   cd Porto
    ```
 
 2. **Instal dependensi:**
@@ -109,7 +109,7 @@
    git push -u origin main
    ```
 2. Buka dashboard [Vercel](https://vercel.com/new).
-3. Pilih **Add New Project** $\rightarrow$ **Import Git Repository** (`dery-builds-a-future`).
+3. Pilih **Add New Project** $\rightarrow$ **Import Git Repository** (`Porto`).
 4. Pada bagian **Build Settings**:
    - Framework Preset: **Other** / Auto-detected
    - Build Command: `NITRO_PRESET=vercel npm run build` (atau `npm run build`)
