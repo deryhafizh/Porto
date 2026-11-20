@@ -1,0 +1,52 @@
+{
+  "features": [
+    {
+      "id": "feat-001",
+      "name": "Harness Engineering & Environment Setup",
+      "description": "Configure harness creator, skill installation, and startup scripts",
+      "dependencies": [],
+      "status": "done",
+      "evidence": "Skill installed at .agents/skills/harness-creator, harness scripts generated"
+    },
+    {
+      "id": "feat-002",
+      "name": "Critical UI Bugs & Overflow Fix",
+      "description": "Fix mobile horizontal scrolling and quote text clipping",
+      "dependencies": ["feat-001"],
+      "status": "done",
+      "evidence": "overflow-x:hidden in body and overflow-wrap:break-word on data-reveal-words in src/styles.css"
+    },
+    {
+      "id": "feat-003",
+      "name": "Visual Overhaul & Components Modernization",
+      "description": "Hero gradient/dot pattern, Navbar glass shadow, Terminal facts box, Skill cards, Project cards grid, 1-click email copy, BackToTop button",
+      "dependencies": ["feat-002"],
+      "status": "done",
+      "evidence": "All components updated in src/components/portfolio/ and src/routes/index.tsx"
+    },
+    {
+      "id": "feat-004",
+      "name": "Verification Coverage",
+      "description": "Run unit test suite and production build",
+      "dependencies": ["feat-003"],
+      "status": "done",
+      "evidence": "5/5 vitest tests passed, production build output generated successfully"
+    },
+    {
+      "id": "feat-005",
+      "name": "Documentation & Session Handoff",
+      "description": "Update progress.md and artifact reports with full change inventory",
+      "dependencies": ["feat-004"],
+      "status": "done",
+      "evidence": "progress.md and ui-ux-improvement-plan.md updated"
+    },
+    {
+      "id": "feat-006",
+      "name": "Motion & UI/UX Pro Max Skills Integration",
+      "description": "Install motion package, motion-ai skill, and ui-ux-pro-max design intelligence skill locally and globally",
+      "dependencies": ["feat-005"],
+      "status": "done",
+      "evidence": "motion installed in package.json; motion and ui-ux-pro-max skills installed in .agents/skills/ and verified"
+    }
+  ]
+}

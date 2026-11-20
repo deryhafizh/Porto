@@ -1,0 +1,310 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Cozy coffee theme on a white-lavender page. Coffee accents kept from Dery's GitHub profile README. */
+@theme inline {
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", "Figtree", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-latte: var(--latte);
+  --color-honey: var(--honey);
+  --color-caramel: var(--caramel);
+  --color-cream: var(--cream);
+  --color-badge-label: var(--badge-label);
+}
+
+:root {
+  --radius: 0.625rem;
+  --ease-soft: cubic-bezier(0.22, 0.8, 0.24, 1);
+  --background: oklch(0.985 0.008 75);     /* warm cream linen parchment (#FAF8F5) */
+  --foreground: oklch(0.22 0.025 45);       /* deep espresso roast (#241B17) */
+  --card: oklch(0.998 0.003 75);           /* pure crisp warm white (#FFFFFF) */
+  --card-foreground: oklch(0.22 0.025 45);
+  --popover: oklch(0.998 0.003 75);
+  --popover-foreground: oklch(0.22 0.025 45);
+  --primary: oklch(0.58 0.165 42);          /* artisanal warm terracotta (#C25E30) */
+  --primary-foreground: oklch(0.99 0 0);   /* crisp pure white for high contrast */
+  --secondary: oklch(0.945 0.015 75);      /* warm milk froth (#F2ECE4) */
+  --secondary-foreground: oklch(0.24 0.025 45);
+  --muted: oklch(0.95 0.012 75);          /* soft warm neutral (#F3EFEA) */
+  --muted-foreground: oklch(0.48 0.025 50); /* warm roasted grey, WCAG AA 4.5:1+ (#6E6157) */
+  --accent: oklch(0.935 0.020 75);         /* warm crema accent (#ECE4D8) */
+  --accent-foreground: oklch(0.22 0.025 45);
+  --destructive: oklch(0.55 0.19 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.89 0.014 75);          /* soft warm border (#E4DDD5) */
+  --input: oklch(0.89 0.014 75);
+  --ring: oklch(0.58 0.165 42);
+  --latte: oklch(0.75 0.115 62);           /* creamy latte (#DDA15E) */
+  --honey: oklch(0.80 0.125 80);           /* golden warm honey (#E09F3E) */
+  --caramel: oklch(0.50 0.125 50);         /* rich caramel (#9C5B28) */
+  --cream: oklch(0.98 0.012 80);           /* warm cream text on dark badges */
+  --badge-label: oklch(0.28 0.025 45);     /* shields.io dark espresso label */
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3 { font-family: var(--font-display); }
+  ::selection { background: color-mix(in oklab, var(--primary) 30%, transparent); }
+  summary { cursor: pointer; }
+  summary::-webkit-details-marker { display: none; }
+}
+
+/* Soft artisanal warm coffee & honey glow banner. */
+@utility lavender {
+  background-image: linear-gradient(135deg, oklch(0.955 0.025 65) 0%, oklch(0.935 0.035 82) 100%);
+}
+
+/* GitHub-markdown style h2: text with a rule underneath (the rule draws in on reveal). */
+@utility md-h2 {
+  position: relative;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  padding-bottom: 0.6rem;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 1px;
+    background: linear-gradient(to right, var(--primary) 0 4rem, var(--border) 4rem);
+    transform-origin: left;
+    transition: transform 1.2s var(--ease-soft) 0.25s;
+  }
+}
+
+/* Soft glass shadow for elevated cards. */
+@utility glass-shadow {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+}
+
+/* Smooth lift + shadow on hover. */
+@utility card-hover {
+  transition: transform 0.35s var(--ease-soft), box-shadow 0.35s var(--ease-soft);
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+  }
+}
+
+/* Card interactive spring lift + glow */
+@utility card-interactive {
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.25, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -8px color-mix(in oklab, var(--primary) 22%, transparent);
+    border-color: color-mix(in oklab, var(--primary) 45%, var(--border));
+  }
+}
+
+/* Pop in animation for interactive states (e.g. checkmark) */
+@keyframes pop-bounce {
+  0% { transform: scale(0.6); opacity: 0; }
+  65% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@utility pop-in {
+  animation: pop-bounce 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Pulse ring effect on active dots / highlights */
+@keyframes pulse-halo {
+  0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--primary) 50%, transparent); }
+  70% { box-shadow: 0 0 0 8px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+@utility pulse-dot {
+  animation: pulse-halo 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+
+/* Gentle warm glow for footer and bottom cards */
+@keyframes warm-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.03); }
+}
+
+@utility warm-glow {
+  animation: warm-pulse 3.5s ease-in-out infinite;
+}
+
+/* Gradient text: primary → latte. */
+@utility gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--latte));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Dot-pattern decorative background. */
+@utility dot-pattern {
+  background-image: radial-gradient(circle, color-mix(in oklab, var(--primary) 10%, transparent) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Gentle float bob animation. */
+@keyframes float-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@utility float-up {
+  animation: float-bob 2.5s ease-in-out infinite;
+}
+
+/* Text link: underline grows from the left on hover / focus / active section. */
+@utility link-line {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 0.45s var(--ease-soft), color 0.2s;
+  &:hover, &:focus-visible, &[aria-current="true"] { background-size: 100% 1px; }
+}
+
+/* Hero entrance: each word/line rises out of a soft blur, once, on load. */
+@keyframes soft-in {
+  from { opacity: 0; transform: translateY(0.45em); filter: blur(12px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+@keyframes hero-out {
+  to { transform: translateY(-48px) scale(0.97); opacity: 0.2; }
+}
+@utility enter {
+  animation: soft-in 1s var(--ease-soft) both;
+  animation-delay: var(--d, 0ms);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero content drifts up and fades while you scroll away (browsers that support it). */
+  @supports (animation-timeline: scroll()) {
+    .hero-parallax {
+      animation: hero-out linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 80vh;
+    }
+  }
+}
+
+/* Lenis smooth scrolling support (like ibnu-portfolio.netlify.app) */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   SCROLL REVEAL (Ibnu Zaky style: .r and .in)
+   Smooth translateY & fade when scrolling down and up
+   ========================================================================== */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .r, [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .r.in, [data-reveal].in, [data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger delays matching Ibnu portfolio */
+  .d1, [data-reveal].d1 { transition-delay: 0.1s; }
+  .d2, [data-reveal].d2 { transition-delay: 0.2s; }
+  .d3, [data-reveal].d3 { transition-delay: 0.3s; }
+  .d4, [data-reveal].d4 { transition-delay: 0.4s; }
+  .d5, [data-reveal].d5 { transition-delay: 0.5s; }
+
+  .md-h2.r:not(.in)::after,
+  .md-h2[data-reveal]:not(.is-visible)::after {
+    transform: scaleX(0);
+  }
+
+  [data-reveal-words] { overflow-wrap: break-word; }
+  [data-reveal-words] .w {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(0.4em);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--d, 0ms);
+  }
+  [data-reveal-words].is-visible .w,
+  [data-reveal-words].in .w {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Typewriter blinking cursor */
+.typed-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--primary);
+  font-weight: 300;
+  animation: cursor-blink 1s step-end infinite;
+}
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Smoothly open/close <details> where supported. */
+:root { interpolate-size: allow-keywords; }
+details::details-content {
+  height: 0;
+  overflow: clip;
+  transition: height 0.45s var(--ease-soft), content-visibility 0.45s allow-discrete;
+}
+details[open]::details-content { height: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-delay: 0ms !important; transition-duration: 0.01ms !important; transition-delay: 0ms !important; }
+}
