@@ -308,3 +308,19 @@ details[open]::details-content { height: auto; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-delay: 0ms !important; transition-duration: 0.01ms !important; transition-delay: 0ms !important; }
 }
+
+/* ==== DEFACEMENT THEME ==== */
+:root{
+  --background:#04070a; --foreground:#b7ffcf;
+  --card:#080f0c; --card-foreground:#b7ffcf;
+  --popover:#080f0c; --popover-foreground:#b7ffcf;
+  --primary:#00ff88; --primary-foreground:#04070a;
+  --secondary:#0b1410; --secondary-foreground:#b7ffcf;
+  --muted:#0b1410; --muted-foreground:#6f9b83;
+  --accent:#0d1a14; --accent-foreground:#b7ffcf;
+  --border:#12301f; --input:#12301f; --ring:#00ff88;
+  --latte:#00e07a; --honey:#7dffb0; --caramel:#00b862;
+  --cream:#d9ffe8; --badge-label:#061009;
+}
+body{font-family:"JetBrains Mono",ui-monospace,monospace}
+.lavender{background-image:linear-gradient(135deg,#061009 0%,#04070a 100%)}
