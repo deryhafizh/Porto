@@ -43,10 +43,14 @@ export function useGitHub(username: string) {
           fetchRepos(username),
           fetchEvents(username).catch(() => [] as GhEvent[]), // feed boleh gagal tanpa merusak bagian lain
         ]);
-        // Commit terakhir dari repo yang paling baru di-push.
-        const latestPush = [...events]
-          .sort((a, b) => b.created_at.localeCompare(a.created_at))
-          .find((e) => e.type === "PushEvent");
+        // Commit terakhir dari repo yang paling baru di-push (prioritaskan proyek selain porto/profil)
+        const ignoredRepoNames = new Set(["porto", "dery-builds-a-future", "dery-builds-a-future-main", username.toLowerCase()]);
+        const sortedEvents = [...events].sort((a, b) => b.created_at.localeCompare(a.created_at));
+        const latestPush = sortedEvents.find((e) => {
+          if (e.type !== "PushEvent") return false;
+          const repoSimple = e.repo.name.split("/")[1]?.toLowerCase() ?? e.repo.name.toLowerCase();
+          return !ignoredRepoNames.has(repoSimple);
+        }) ?? sortedEvents.find((e) => e.type === "PushEvent");
         const commitsRepo = latestPush?.repo.name ?? null;
         const commits = commitsRepo
           ? await fetchCommits(commitsRepo, username).catch(() => [] as Commit[])

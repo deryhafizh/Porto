@@ -34,8 +34,15 @@ describe("pickFeatured", () => {
     id: name.length, name, description: null, language: null, html_url: "", homepage: null,
     stargazers_count: 0, fork: false, size: 10, updated_at: "", pushed_at: "2026-01-01T00:00:00Z", ...extra,
   });
-  it("skips forks, empty repos and the profile README repo", () => {
-    const out = pickFeatured([repo("deryhafizh"), repo("forked", { fork: true }), repo("empty", { size: 0 }), repo("real")], "deryhafizh");
+  it("skips forks, empty repos, profile README repo, and porto portfolio repo", () => {
+    const out = pickFeatured([
+      repo("deryhafizh"),
+      repo("forked", { fork: true }),
+      repo("empty", { size: 0 }),
+      repo("Porto"),
+      repo("porto"),
+      repo("real"),
+    ], "deryhafizh");
     expect(out.map((r) => r.name)).toEqual(["real"]);
   });
 });

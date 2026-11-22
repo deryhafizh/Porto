@@ -70,10 +70,17 @@ export const fetchEvents = (u: string) => cachedFetch<GhEvent[]>(`${API}/users/$
 export const fetchCommits = (repo: string, author: string) =>
   cachedFetch<Commit[]>(`${API}/repos/${repo}/commits?per_page=5&author=${author}`);
 
-/** Proyek = bukan fork, ada isinya, dan bukan repo README profil. Yang terbaru di-push duluan. */
+/** Proyek = bukan fork, ada isinya, bukan repo README profil, dan bukan repo portofolio itu sendiri (Porto). Yang terbaru di-push duluan. */
 export function pickFeatured(repos: Repo[], user: string) {
+  const ignoredNames = new Set([
+    user.toLowerCase(),
+    "porto",
+    "dery-builds-a-future",
+    "dery-builds-a-future-main",
+    "portfolio",
+  ]);
   return repos
-    .filter((r) => !r.fork && r.size > 0 && r.name.toLowerCase() !== user.toLowerCase())
+    .filter((r) => !r.fork && r.size > 0 && !ignoredNames.has(r.name.toLowerCase()))
     .sort((a, b) => b.pushed_at.localeCompare(a.pushed_at))
     .slice(0, 6);
 }
